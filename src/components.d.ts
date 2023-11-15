@@ -10,6 +10,7 @@ declare module '@vue/runtime-core' {
     DeleteButton: typeof import('./components/buttons/DeleteButton.vue')['default']
     DropDown: typeof import('./components/buttons/DropDown.vue')['default']
     FabButton: typeof import('./components/buttons/FabButton.vue')['default']
+    HeaderIndex: typeof import('./components/HeaderIndex.vue')['default']
     LoaderButton: typeof import('./components/buttons/LoaderButton.vue')['default']
     MakdownEditor: typeof import('./components/MakdownEditor.vue')['default']
     MinhasListas: typeof import('./components/list/MinhasListas.vue')['default']
