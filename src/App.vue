@@ -1,31 +1,16 @@
-<script setup lang="ts">
-useHead({
-  title: "terguino-app",
-  meta: [
-    { name: "description", content: "Opinionated Vite Starter Template" },
-    {
-      name: "theme-color",
-      content: computed(() => (isDark.value ? "#00aba9" : "#ffffff")),
-    },
-  ],
-});
-</script>
-
 <template>
   <div class="bg-black window-height">
     <RouterView />
-    <div class="footer fit">
-      <div class="row justify-center">
-        <span class="text-center">2023 - asdasdsad</span>
-      </div>
+    <div class="footer text-center bg-grey-10 full-width q-py-sm">
+      <span class="text-center text-grey-6 text-bold">2023 - Terguino Lembretes</span>
     </div>
   </div>
 </template>
 
 <style scoped>
 .footer {
-  position: relative;
-  bottom: 1;
+  position: absolute;
+  bottom: 0;
 }
 </style>
 
