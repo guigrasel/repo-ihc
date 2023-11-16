@@ -4,7 +4,7 @@
       <span class="text-h5 text-bold">
         Eletrodomésticos
       </span>
-      <ViewButtons />
+      <ViewButtons view="eletrodomesticos"/>
     </span>
   </div>
 </template>

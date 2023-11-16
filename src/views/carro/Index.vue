@@ -4,7 +4,7 @@
       <span class="text-h5 text-bold">
         Carro
       </span>
-      <ViewButtons />
+      <ViewButtons view="carro"/>
     </span>
   </div>
 </template>

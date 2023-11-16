@@ -4,7 +4,7 @@
       <span class="text-h5 text-bold">
         Casa
       </span>
-      <ViewButtons />
+      <ViewButtons view="casa"/>
     </span>
   </div>
 </template>
