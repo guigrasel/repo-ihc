@@ -5,7 +5,7 @@
         Casa
       </span>
       
-      <ViewButtons view="casa" :lembretes="casa"/>
+      <ViewButtons view="casa" :lembretes="lembretes.casa"/>
     </span>
   </div>
 </template>
@@ -13,5 +13,5 @@
 <script setup lang="ts">
 import { useLembretesStore } from '../../stores'
 
-const { casa } = useLembretesStore()
+const { lembretes } = useLembretesStore()
 </script>

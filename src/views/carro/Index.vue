@@ -5,7 +5,7 @@
         Carro
       </span>
       
-      <ViewButtons view="carro" :lembretes="carro"/>
+      <ViewButtons view="carro" :lembretes="lembretes.carro"/>
     </span>
   </div>
 </template>
@@ -13,5 +13,5 @@
 <script setup lang="ts">
 import { useLembretesStore } from '../../stores'
 
-const { carro } = useLembretesStore()
+const { lembretes } = useLembretesStore()
 </script>

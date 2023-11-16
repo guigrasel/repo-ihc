@@ -2,10 +2,12 @@ import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useLembretesStore = defineStore("lembretes", () => {
-  const casa = ref([])
-  const carro = ref([])
-  const eletrodomesticos = ref([])
-  const outros = ref([])
+  const lembretes = {
+    casa: [],
+    carro: [],
+    eletrodomesticos: [],
+    outros: [],
+  }
 
   /**
    * `incrementAge` is a function that takes no arguments and returns nothing
@@ -15,9 +17,6 @@ export const useLembretesStore = defineStore("lembretes", () => {
   // }
 
   return {
-    casa,
-    carro,
-    eletrodomesticos,
-    outros
+    lembretes
   };
 });

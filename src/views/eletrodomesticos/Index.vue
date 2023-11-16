@@ -5,7 +5,7 @@
         Eletrodomésticos
       </span>
       
-      <ViewButtons view="eletrodomesticos" :lembretes="eletrodomesticos"/>
+      <ViewButtons view="eletrodomesticos" :lembretes="lembretes.eletrodomesticos"/>
     </span>
   </div>
 </template>
@@ -13,5 +13,5 @@
 <script setup lang="ts">
 import { useLembretesStore } from '../../stores'
 
-const { eletrodomesticos } = useLembretesStore()
+const { lembretes } = useLembretesStore()
 </script>
