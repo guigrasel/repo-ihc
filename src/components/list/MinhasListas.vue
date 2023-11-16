@@ -33,7 +33,7 @@ const itens = [
 ]
 </script>
 
-<style scoped>
+<style>
 .icon {
   border-radius: 100%;
 }

@@ -6,6 +6,10 @@
       </span>
       
       <ViewButtons view="casa" :lembretes="lembretes.casa"/>
+
+      <BtnAddLembrete @click="modal = true"/>
+      
+      <ModalAddLembrete v-model="modal" title="Novo lembrete"/>
     </span>
   </div>
 </template>
@@ -14,4 +18,6 @@
 import { useLembretesStore } from '../../stores'
 
 const { lembretes } = useLembretesStore()
+
+const modal = ref(false)
 </script>

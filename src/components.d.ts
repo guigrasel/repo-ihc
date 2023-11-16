@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    BtnAddLembrete: typeof import('./components/BtnAddLembrete.vue')['default']
     DeleteButton: typeof import('./components/buttons/DeleteButton.vue')['default']
     DropDown: typeof import('./components/buttons/DropDown.vue')['default']
     FabButton: typeof import('./components/buttons/FabButton.vue')['default']
@@ -14,6 +15,7 @@ declare module '@vue/runtime-core' {
     LoaderButton: typeof import('./components/buttons/LoaderButton.vue')['default']
     MakdownEditor: typeof import('./components/MakdownEditor.vue')['default']
     MinhasListas: typeof import('./components/list/MinhasListas.vue')['default']
+    ModalAddLembrete: typeof import('./components/ModalAddLembrete.vue')['default']
     OptionLocales: typeof import('./components/OptionLocales.vue')['default']
     PaymentButton: typeof import('./components/buttons/PaymentButton.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
