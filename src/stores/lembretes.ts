@@ -1,11 +1,11 @@
-import { defineStore, acceptHMRUpdate } from "pinia";
+import { defineStore } from "pinia";
 import { ref } from "vue";
 
-export const useUserStore = defineStore("lembretes", () => {
-  const casa = ref([{ data: '', descricao: ''}])
-  const carro = ref([{ data: '', descricao: ''}])
-  const eletrodomesticos = ref([{ data: '', descricao: ''}])
-  const outros = ref([{ data: '', descricao: ''}])
+export const useLembretesStore = defineStore("lembretes", () => {
+  const casa = ref([])
+  const carro = ref([])
+  const eletrodomesticos = ref([])
+  const outros = ref([])
 
   /**
    * `incrementAge` is a function that takes no arguments and returns nothing
