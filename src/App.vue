@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-black window-height">
+  <div class="overflow bg-black window-height">
     <HeaderIndex />
     <RouterView />
     <div class="footer text-center bg-grey-10 full-width q-py-sm">
@@ -12,6 +12,10 @@
 .footer {
   position: absolute;
   bottom: 0;
+}
+
+.overflow {
+  overflow-y: hidden;
 }
 </style>
 
