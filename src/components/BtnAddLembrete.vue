@@ -7,7 +7,7 @@
 
 <style scoped>
 .btn {
-  position: fixed;
+  position: absolute;
   bottom: 3.5rem;
 }
 
