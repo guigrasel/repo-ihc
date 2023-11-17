@@ -2,7 +2,7 @@
   <q-dialog persistent full-width>
     <q-card>
       <q-card-section class="row items-center">
-        <div class="text-h5">{{ title }}</div>
+        <div class="text-h5">Novo lembrete</div>
         <q-space />
         <q-btn icon="close" flat round dense v-close-popup />
       </q-card-section>
@@ -11,7 +11,7 @@
 
       <q-card-section>
         <form @submit.prevent="submit">
-          <q-input outlined v-model="form.data" type="date"/>
+          <q-input outlined v-model="form.data" label="Data" type="date"/>
           <q-input outlined v-model="form.title" label="Título" class="q-mt-md"/>
           <q-input outlined v-model="form.descricao" label="Descrição" type="textarea" class="q-mt-md"/>
 
