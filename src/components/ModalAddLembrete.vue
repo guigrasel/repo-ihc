@@ -1,5 +1,5 @@
 <template>
-  <q-dialog persistent>
+  <q-dialog persistent full-width>
     <q-card>
       <q-card-section class="row items-center">
         <div class="text-h5">{{ title }}</div>
@@ -10,22 +10,35 @@
       <q-separator />
 
       <q-card-section>
-        <slot />
+        <form @submit.prevent="$emit('submit', form)">
+          <q-input outlined v-model="form.data" type="date"/>
+          <q-input outlined v-model="form.title" label="Título" class="q-mt-md"/>
+          <q-input outlined v-model="form.descricao" label="Descrição" type="textarea" class="q-mt-md"/>
+
+          <div class="row justify-end q-mt-md">
+            <q-btn label="Salvar" color="primary" no-caps/>
+          </div>
+        </form>
       </q-card-section>
     </q-card>
   </q-dialog>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { Ref } from 'vue'
 
-export default defineComponent({
-  name: 'ModalAddLembrete',
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
+interface FormLembrete {
+  data: string
+  title: string
+  descricao: string
+}
+
+defineProps({
+  title: {
+    type: String,
+    required: true,
   },
-});
+})
+
+const form: Ref<FormLembrete> = ref({data: '', title: '', descricao: ''})
 </script> 

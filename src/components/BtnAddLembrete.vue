@@ -10,4 +10,8 @@
   position: fixed;
   bottom: 3.5rem;
 }
+
+.icon {
+  border-radius: 100%;
+}
 </style>
