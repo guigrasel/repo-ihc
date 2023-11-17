@@ -1,22 +1,29 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { FormLembrete } from "../components/ModalAddLembrete.vue";
+
+interface Lembretes {
+  casa: FormLembrete[]
+  carro: FormLembrete[]
+  eletrodomesticos: FormLembrete[]
+  outros: FormLembrete[]
+}
 
 export const useLembretesStore = defineStore("lembretes", () => {
-  const lembretes = {
+  const lembretes: Lembretes = {
     casa: [],
     carro: [],
     eletrodomesticos: [],
     outros: [],
   }
 
-  /**
-   * `incrementAge` is a function that takes no arguments and returns nothing
-   */
-  // function incrementAge() {
-  //   age.value += 1;
-  // }
+  function novoLembrete(tipo: keyof Lembretes, novoLembrete: FormLembrete) {
+    lembretes[tipo].push(novoLembrete)
+
+    notifyPositive('Lembrete adicionado com sucesso!')
+  }
 
   return {
-    lembretes
+    lembretes,
+    novoLembrete
   };
 });

@@ -1,5 +1,6 @@
 export * from "./host";
 export * from "./api";
+export * from "./notify";
 
 export function increment(value: number) {
   return (value += 1);
