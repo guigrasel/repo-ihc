@@ -16,7 +16,7 @@
 
     <div
       class="button col-5 bg-grey-10 q-py-sm q-ma-sm"
-      @click="$router.push({ path: `${view}/concluidos`, params: { concluidos: pendentes } })"
+      @click="$router.push({ path: `${view}/concluidos` })"
       >
       Concluídos
     </div>
