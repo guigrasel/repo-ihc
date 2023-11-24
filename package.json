@@ -17,7 +17,7 @@
     "@quasar/extras": "^1.15.7",
     "@rollup/plugin-graphql": "^2.0.2",
     "@types/lodash-es": "^4.17.11",
-    "@types/luxon": "^3.3.4",
+    "@types/luxon": "^3.3.5",
     "@vueuse/core": "^9.6.0",
     "graphql": "^16.6.0",
     "lodash-es": "^4.17.21",
