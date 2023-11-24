@@ -9,3 +9,11 @@
     <LembretesList />
   </div>
 </template>
+
+<script setup lang="ts">
+import { useLembretesStore } from '../../../stores'
+
+const { getLembretes } = useLembretesStore()
+
+const lembretes = getLembretes('casa')
+</script>

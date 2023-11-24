@@ -6,7 +6,7 @@
       </span>
     </span>
 
-    <LembretesList />
+    <LembretesList :items="lembretes.concluidos"/>
   </div>
 </template>
 

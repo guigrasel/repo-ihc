@@ -5,8 +5,7 @@
         Casa
       </span>
       
-      <ViewButtons view="casa" :lembretes="lembretes.casa"/>
-      {{ lembretes.casa }}
+      <ViewButtons view="casa" />
 
       <BtnAddLembrete @click="modal = true"/>
       
@@ -19,7 +18,7 @@
 import { FormLembrete } from '../../components/ModalAddLembrete.vue'
 import { useLembretesStore } from '../../stores'
 
-const { lembretes, novoLembrete } = useLembretesStore()
+const { novoLembrete } = useLembretesStore()
 
 const modal = ref(false)
 
