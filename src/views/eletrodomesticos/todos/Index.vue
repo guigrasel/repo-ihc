@@ -5,5 +5,7 @@
         Todos
       </span>
     </span>
+
+    <LembretesList />
   </div>
 </template>

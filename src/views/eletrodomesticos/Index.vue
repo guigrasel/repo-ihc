@@ -6,7 +6,6 @@
       </span>
       
       <ViewButtons view="eletrodomesticos" :lembretes="lembretes.eletrodomesticos"/>
-      {{ lembretes.eletrodomesticos }}
 
       <BtnAddLembrete @click="modal = true"/>
       
