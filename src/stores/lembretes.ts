@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { DateTime } from "luxon";
 
 import { FormLembrete } from "../components/ModalAddLembrete.vue";
+import { isEmpty } from "lodash-es";
 
 interface Lembretes {
   casa: FormLembrete[];
@@ -53,23 +54,25 @@ export const useLembretesStore = defineStore("lembretes", () => {
     const concluidos: Lembrete[] = [];
   
     const dataAtual: DateTime = DateTime.now();
-  
-    lembretes.forEach((lembrete: Lembrete) => {
-      const dataLembrete: DateTime = DateTime.fromISO(lembrete.data);
-  
-      if (dataLembrete.hasSame(dataAtual, 'day')) {
-        hoje.push(lembrete);
-        return;
-      }
-  
-      if (dataLembrete < dataAtual) {
-        concluidos.push(lembrete);
-        return;
-      }
-  
-      pendentes.push(lembrete);
-    });
-  
+
+    if (!isEmpty(lembretes)) {
+      lembretes.forEach((lembrete: Lembrete) => {
+        const dataLembrete: DateTime = DateTime.fromISO(lembrete.data);
+    
+        if (dataLembrete.hasSame(dataAtual, 'day')) {
+          hoje.push(lembrete);
+          return;
+        }
+    
+        if (dataLembrete < dataAtual) {
+          concluidos.push(lembrete);
+          return;
+        }
+    
+        pendentes.push(lembrete);
+      });
+    }
+    
     return {
       hoje,
       pendentes,
