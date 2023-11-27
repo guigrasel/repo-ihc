@@ -4,7 +4,7 @@ import { DateTime } from "luxon";
 import { FormLembrete } from "../components/ModalAddLembrete.vue";
 import { isEmpty } from "lodash-es";
 
-interface Lembretes {
+export interface Lembretes {
   casa: FormLembrete[];
   carro: FormLembrete[];
   eletrodomesticos: FormLembrete[];
@@ -72,7 +72,7 @@ export const useLembretesStore = defineStore("lembretes", () => {
         pendentes.push(lembrete);
       });
     }
-    
+
     return {
       hoje,
       pendentes,
