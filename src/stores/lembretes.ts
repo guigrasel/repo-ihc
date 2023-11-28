@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { DateTime } from "luxon";
 
 import { FormLembrete } from "../components/ModalAddLembrete.vue";
-import { isEmpty } from "lodash-es";
+import { findIndex, isEmpty, isEqual } from "lodash-es";
 
 export interface Lembretes {
   casa: FormLembrete[];
@@ -17,7 +17,7 @@ interface Lembrete {
   descricao: string;
 }
 
-interface LembretesSeparados {
+export interface LembretesSeparados {
   hoje: Lembrete[];
   pendentes: Lembrete[];
   concluidos: Lembrete[];
@@ -85,9 +85,23 @@ export const useLembretesStore = defineStore("lembretes", () => {
     return separarLembretes(lembretes[tipo])
   }
 
+  function delLembrete(tipo: keyof Lembretes, periodo: keyof LembretesSeparados, index: number) {
+    const result: LembretesSeparados = separarLembretes(lembretes[tipo])
+    const deletar = result[periodo][index]
+
+    const indexDeletar = findIndex(lembretes[tipo], lembrete => isEqual(lembrete, deletar))
+
+    lembretes[tipo].splice(indexDeletar, 1)
+
+    salvarLembretes();
+
+    notifyPositive("Lembrete deletado com sucesso!");
+  }
+
   return {
     lembretes,
     novoLembrete,
-    getLembretes
+    getLembretes,
+    delLembrete
   };
 });
