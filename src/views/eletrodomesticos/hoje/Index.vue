@@ -6,7 +6,7 @@
       </span>
     </span>
 
-    <LembretesList :items="lembretes.hoje"/>
+    <LembretesList :items="lembretes.hoje" view="eletrodomesticos" periodo="hoje"/>
   </div>
 </template>
 

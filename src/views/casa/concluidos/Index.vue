@@ -6,7 +6,7 @@
       </span>
     </span>
 
-    <LembretesList />
+    <LembretesList :items="lembretes.concluidos" view="casa" periodo="concluidos"/>
   </div>
 </template>
 

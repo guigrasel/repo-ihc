@@ -6,7 +6,7 @@
       </span>
     </span>
 
-    <LembretesList :items="lembretes.concluidos"/>
+    <LembretesList :items="lembretes.concluidos" view="eletrodomesticos" periodo="concluidos"/>
   </div>
 </template>
 

@@ -6,7 +6,7 @@
       </span>
     </span>
 
-    <LembretesList :items="lembretes.pendentes"/>
+    <LembretesList :items="lembretes.pendentes" view="eletrodomesticos" periodo="pendentes"/>
   </div>
 </template>
 
