@@ -3,7 +3,7 @@
     <div v-for="(item, index) in items" :key="index" class="item row items-center justify-between text-left q-px-lg fit q-py-sm">
       <div class="column">
         <span class="text-subtitle1 text-bold">{{ item.title }}</span>
-        <span>{{ item.data }}</span>
+        <span>{{ formatDate(item.data) }}</span>
       </div>
       <div>
         <q-icon name="mdi-delete" size="1.5rem" color="red" @click="deletarLembrete(index), $router.back()"/>
@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import formatDate from '../composables/formatters';
 import { Lembretes, LembretesSeparados } from '../stores';
 
 const { delLembrete } = useLembretesStore()
