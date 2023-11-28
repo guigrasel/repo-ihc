@@ -6,7 +6,7 @@
         <span>{{ item.data }}</span>
       </div>
       <div>
-        <q-icon name="mdi-delete" size="1.5rem" color="red" @click="deletarLembrete(index)"/>
+        <q-icon name="mdi-delete" size="1.5rem" color="red" @click="deletarLembrete(index), $router.back()"/>
       </div>
     </div>
   </div>
@@ -40,6 +40,8 @@ const props = defineProps({
 
 function deletarLembrete(index: number){
   delLembrete(props.view, props.periodo, index)
+
+  notifyPositive("Lembrete deletado com sucesso!");
 }
 </script>
 

@@ -94,8 +94,6 @@ export const useLembretesStore = defineStore("lembretes", () => {
     lembretes[tipo].splice(indexDeletar, 1)
 
     salvarLembretes();
-
-    notifyPositive("Lembrete deletado com sucesso!");
   }
 
   return {
