@@ -46,10 +46,6 @@ export const useLembretesStore = defineStore("lembretes", () => {
     salvarLembretes();
 
     notifyPositive("Lembrete adicionado com sucesso!");
-
-    setTimeout(() => {
-      location.reload()
-    }, 700)
   }
   
   function separarLembretes(lembretes: Lembrete[]): LembretesSeparados {
