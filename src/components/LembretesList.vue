@@ -1,6 +1,12 @@
 <template>
   <div class="text-white q-mt-md">
-    <div v-if="items.length" v-for="(item, index) in items" :key="index" :class="index === 0 && 'border-top'" class="border-bottom row items-center justify-between text-left q-px-lg fit q-py-sm">
+    <div 
+      v-if="items.length" 
+      v-for="(item, index) in items" 
+      :key="index" :class="index === 0 && 'border-top'" 
+      class="border-bottom row items-center justify-between text-left q-px-lg fit q-py-sm"
+      @click="openModal(item)"
+      >
       <div class="column">
         <span class="text-subtitle1 text-bold">{{ item.title }}</span>
         <span>{{ formatDate(item.data) }}</span>
@@ -17,6 +23,27 @@
       </div>
     </div>
   </div>
+
+
+  <q-dialog v-model="modal" full-width>
+    <q-card class="bg-white">
+      <q-card-section class="row items-center">
+        <div class="text-h6">{{ lembrete.title }}</div>
+        <q-space />
+        <q-btn icon="close" flat round dense v-close-popup />
+      </q-card-section>
+      <q-separator />
+      
+      <div class="text-subtitle1 q-pa-md">
+        {{ lembrete.descricao }}
+      </div>
+
+      <q-separator />
+      <div class="text-subtitle1 text-center text-bold">
+        {{ formatDate(lembrete.data) }}
+      </div>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script setup lang="ts">
@@ -24,6 +51,9 @@ import formatDate from '../composables/formatters';
 import { Lembretes, LembretesSeparados } from '../stores';
 
 const { delLembrete } = useLembretesStore()
+
+const modal = ref(false)
+const lembrete = ref()
 
 interface Lembrete {
   data: string;
@@ -50,6 +80,11 @@ function deletarLembrete(index: number){
   delLembrete(props.view, props.periodo, index)
 
   notifyPositive("Lembrete deletado com sucesso!");
+}
+
+function openModal(item){
+  modal.value = true
+  lembrete.value = item
 }
 </script>
 
