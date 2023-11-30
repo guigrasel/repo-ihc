@@ -4,7 +4,7 @@
       <q-card-section class="row items-center">
         <div class="text-h5 text-black">Novo lembrete</div>
         <q-space />
-        <q-btn icon="close" flat round dense v-close-popup />
+        <q-btn icon="close" flat round dense v-close-popup color="black"/>
       </q-card-section>
 
       <q-separator />
