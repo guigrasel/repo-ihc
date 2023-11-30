@@ -26,11 +26,11 @@
 
 
   <q-dialog v-model="modal" full-width>
-    <q-card class="bg-white">
+    <q-card class="bg-white text-black">
       <q-card-section class="row items-center">
         <div class="text-h6">{{ lembrete.title }}</div>
         <q-space />
-        <q-btn icon="close" flat round dense v-close-popup />
+        <q-btn icon="close" flat round dense v-close-popup color="black"/>
       </q-card-section>
       <q-separator />
       
