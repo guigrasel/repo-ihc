@@ -10,15 +10,15 @@
       <q-separator />
 
       <q-card-section>
-        <form @submit.prevent="submit">
-          <q-input outlined v-model="form.data" label="Data" type="date"/>
-          <q-input outlined v-model="form.title" label="Título" class="q-mt-md"/>
-          <q-input outlined v-model="form.descricao" label="Descrição" type="textarea" class="q-mt-md"/>
+        <q-form @submit.prevent="submit">
+          <q-input outlined v-model="form.data" label="Data" type="date" :rules="[(val) => (!!val && val.length > 0) || 'Campo requerido']"/>
+          <q-input outlined v-model="form.title" label="Título" class="q-mt-md" :rules="[(val) => (!!val && val.length > 0) || 'Campo requerido']"/>
+          <q-input outlined v-model="form.descricao" label="Descrição" type="textarea" class="q-mt-md" :rules="[(val) => (!!val && val.length > 0) || 'Campo requerido']"/>
 
           <div class="row justify-end q-mt-md">
             <q-btn label="Salvar" color="primary" no-caps type="submit"/>
           </div>
-        </form>
+        </q-form>
       </q-card-section>
     </q-card>
   </q-dialog>
