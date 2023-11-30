@@ -13,7 +13,7 @@
       @click="$router.push({ path: `${view}/todos` })"
       >
       <span class="text-subtitle1 text-bold">
-        Todos
+        Pendentes
       </span>
       <span class="bg-primary circle text-bold">{{ lembretes.pendentes.length }}</span>
     </div>
