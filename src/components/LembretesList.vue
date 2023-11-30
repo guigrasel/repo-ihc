@@ -82,7 +82,7 @@ function deletarLembrete(index: number){
   notifyPositive("Lembrete deletado com sucesso!");
 }
 
-function openModal(item){
+function openModal(item: Lembrete){
   modal.value = true
   lembrete.value = item
 }
