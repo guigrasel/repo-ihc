@@ -1,12 +1,19 @@
 <template>
   <div class="text-white q-mt-md">
-    <div v-for="(item, index) in items" :key="index" class="item row items-center justify-between text-left q-px-lg fit q-py-sm">
+    <div v-if="items.length" v-for="(item, index) in items" :key="index" :class="index === 0 && 'border-top'" class="border-bottom row items-center justify-between text-left q-px-lg fit q-py-sm">
       <div class="column">
         <span class="text-subtitle1 text-bold">{{ item.title }}</span>
         <span>{{ formatDate(item.data) }}</span>
       </div>
       <div>
         <q-icon name="mdi-delete" size="1.5rem" color="red" @click="deletarLembrete(index), $router.back()"/>
+      </div>
+    </div>
+    
+    <div v-else>
+      <div class="column items-center border q-mx-lg q-pa-sm q-mt-lg" @click="$router.back()">
+        <q-icon name="mdi-emoticon-sad-outline" size="5rem"/>
+        <span class="text-subtitle1 q-mt-md text-bold q-px-lg line-heigth">Nenhum lembrete encontrado, clique aqui para voltar.</span>
       </div>
     </div>
   </div>
@@ -47,8 +54,20 @@ function deletarLembrete(index: number){
 </script>
 
 <style scoped>
-.item {
+.border-bottom {
   border-bottom: 2px solid rgb(44, 44, 44);
+}
+
+.border-top {
   border-top: 2px solid rgb(44, 44, 44);
+}
+
+.line-heigth {
+  line-height: 1.1;
+}
+
+.border {
+  border: 3px solid white;
+  border-radius: 10px;
 }
 </style>
