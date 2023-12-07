@@ -70,10 +70,10 @@ const form: Ref<FormLembrete> = ref(props.item)
 function submit() {
   if(!props.isEdit){
     emit('submit', form.value)
+    form.value = {data: '', title: '', descricao: ''}
     return
   }
   emit('submit', form.value, props.index)
 
-  form.value = {data: '', title: '', descricao: ''}
 }
 </script> 
