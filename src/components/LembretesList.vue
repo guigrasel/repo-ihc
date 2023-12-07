@@ -69,6 +69,7 @@ interface Lembrete {
   data: string;
   title: string;
   descricao: string;
+  concluido?: boolean
 }
 
 const props = defineProps({

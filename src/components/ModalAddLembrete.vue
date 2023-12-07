@@ -2,7 +2,7 @@
   <q-dialog persistent full-width>
     <q-card>
       <q-card-section class="row items-center">
-        <div class="text-h5 text-black">Novo lembrete</div>
+        <div class="text-h5 text-black">{{isEdit ? 'Editar lembrete' : 'Adicionar lembrete'}}</div>
         <q-space />
         <q-btn icon="close" flat round dense v-close-popup color="black"/>
       </q-card-section>
@@ -64,9 +64,8 @@ const props = defineProps({
 
 const emit = defineEmits(['submit'])
 
-const teste = reactive(props.item)
 
-const form: Ref<FormLembrete> = ref(teste)
+const form: Ref<FormLembrete> = ref(props.item)
 
 function submit() {
   if(!props.isEdit){

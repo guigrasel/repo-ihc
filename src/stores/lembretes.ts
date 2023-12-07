@@ -113,9 +113,6 @@ export const useLembretesStore = defineStore("lembretes", () => {
 
     const indexEditar = findIndex(lembretes[tipo], lembrete => isEqual(lembrete, editar))
 
-    console.log(lembretes[tipo][indexEditar]);
-    
-
     lembretes[tipo][indexEditar].concluido = true
 
     salvarLembretes();
