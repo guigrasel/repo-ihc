@@ -32,6 +32,7 @@ export interface FormLembrete {
   data: string
   title: string
   descricao: string
+  concluido?: boolean
 }
 
 const props = defineProps({
@@ -73,5 +74,7 @@ function submit() {
     return
   }
   emit('submit', form.value, props.index)
+
+  form.value = {data: '', title: '', descricao: ''}
 }
 </script> 

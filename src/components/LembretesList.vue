@@ -40,7 +40,7 @@
         {{ lembrete.descricao }}
       </div>
 
-      <div v-if="!lembrete.concluido || lembrete.periodo === 'concluido'" class="btn full-width row justify-center items-center q-py-sm" @click="concluido(index), $router.back()">
+      <div v-if="!lembrete.concluido && periodo !== 'concluidos'" class="btn full-width row justify-center items-center q-py-sm" @click="concluido(index), $router.back()">
         <q-icon name="mdi-check" size="1.20rem" color="white" class="q-pa-xs bg-primary icon"/>
         <span class="text-primary text-subtitle-1 text-bold q-ml-sm">Marcar como concluído</span>
       </div>
