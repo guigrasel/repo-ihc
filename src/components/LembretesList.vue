@@ -40,13 +40,12 @@
         {{ lembrete.descricao }}
       </div>
 
-      <div v-if="!lembrete.concluido && periodo !== 'concluidos'" class="btn full-width row justify-center items-center q-py-sm" @click="concluido, $router.back()">
+      <div v-if="!lembrete.concluido && periodo !== 'concluidos'" class="btn full-width row justify-center items-center q-py-sm" @click="concluido">
         <q-icon name="mdi-check" size="1.20rem" color="white" class="q-pa-xs bg-primary icon"/>
         <span class="text-primary text-subtitle-1 text-bold q-ml-sm">Marcar como concluído</span>
       </div>
 
       <q-separator />
-      
       <div class="text-subtitle1 text-center text-bold">
         {{ formatDate(lembrete.data) }}
       </div>
@@ -108,8 +107,10 @@ function editarLembrete(item: Lembrete, index: number){
   notifyPositive("Lembrete editado com sucesso!");
 }
 
-function concluido(index: number){
+function concluido(){
   marcarConcluido(props.view, props.periodo, indexToEdit.value)
+
+  router.back()
 
   notifyPositive("Lembrete marcado como concluído");
 }
