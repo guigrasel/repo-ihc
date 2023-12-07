@@ -12,7 +12,7 @@
         <span>{{ formatDate(item.data) }}</span>
       </div>
       <div @click.stop.prevent>
-        <q-icon name="mdi-pencil" size="1.5rem" color="primary" class="q-mr-sm" @click="openModalEdit(index, item)"/>
+        <q-icon v-if="periodo !== 'concluidos'" name="mdi-pencil" size="1.5rem" color="primary" class="q-mr-sm" @click="openModalEdit(index, item)"/>
         <q-icon name="mdi-delete" size="1.5rem" color="red" @click="deletarLembrete(index), $router.back()"/>
       </div>
     </div>
