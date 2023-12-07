@@ -38,7 +38,7 @@ export interface FormLembrete {
 const props = defineProps({
   title: {
     type: String,
-    required: true,
+    default: '',
   },
   item: {
     type: Object as () => FormLembrete,
