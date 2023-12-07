@@ -15,6 +15,7 @@ interface Lembrete {
   data: string;
   title: string;
   descricao: string;
+  concluido?: boolean;
 }
 
 export interface LembretesSeparados {
@@ -60,7 +61,7 @@ export const useLembretesStore = defineStore("lembretes", () => {
         const dataLembrete: DateTime = DateTime.fromISO(lembrete.data);
     
         if (dataLembrete.hasSame(dataAtual, 'day')) {
-          hoje.push(lembrete);
+          pendentes.push(lembrete);
           return;
         }
     
@@ -96,10 +97,22 @@ export const useLembretesStore = defineStore("lembretes", () => {
     salvarLembretes();
   }
 
+  function editLembrete(tipo: keyof Lembretes, periodo: keyof LembretesSeparados, index: number, item: Lembrete) {
+    const result: LembretesSeparados = separarLembretes(lembretes[tipo])
+    const editar = result[periodo][index]
+
+    const indexEditar = findIndex(lembretes[tipo], lembrete => isEqual(lembrete, editar))
+
+    lembretes[tipo][indexEditar] = item
+
+    salvarLembretes();
+  }
+
   return {
     lembretes,
     novoLembrete,
     getLembretes,
-    delLembrete
+    delLembrete,
+    editLembrete
   };
 });

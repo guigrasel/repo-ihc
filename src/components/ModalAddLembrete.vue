@@ -7,6 +7,9 @@
         <q-btn icon="close" flat round dense v-close-popup color="black"/>
       </q-card-section>
 
+
+      {{form}}
+
       <q-separator />
 
       <q-card-section>
@@ -26,6 +29,7 @@
 
 <script setup lang="ts">
 import { Ref } from 'vue'
+import { Lembretes, LembretesSeparados } from '../stores'
 
 export interface FormLembrete {
   data: string
@@ -33,18 +37,44 @@ export interface FormLembrete {
   descricao: string
 }
 
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true,
+  },
+  item: {
+    type: Object as () => FormLembrete,
+    default: {data: '', title: '', descricao: ''}
+  },
+  isEdit: {
+    type: Boolean,
+    default: false
+  },
+  view: {
+    type: String as () => keyof Lembretes,
+    default: () => ''
+  },
+  periodo: {
+    type: String as () => keyof LembretesSeparados,
+    default: () => ''
+  },
+  index: {
+    type: Number,
+    default: null
   },
 })
 
 const emit = defineEmits(['submit'])
 
-const form: Ref<FormLembrete> = ref({data: '', title: '', descricao: ''})
+const teste = reactive(props.item)
+
+const form: Ref<FormLembrete> = ref(teste)
 
 function submit() {
-  emit('submit', form.value)
+  if(!props.isEdit){
+    emit('submit', form.value)
+    return
+  }
+  emit('submit', form.value, props.index)
 }
 </script> 

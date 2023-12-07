@@ -11,7 +11,8 @@
         <span class="text-subtitle1 text-bold">{{ item.title }}</span>
         <span>{{ formatDate(item.data) }}</span>
       </div>
-      <div>
+      <div @click.stop.prevent>
+        <q-icon name="mdi-pencil" size="1.5rem" color="primary" class="q-mr-sm" @click="openModalEdit(index, item)"/>
         <q-icon name="mdi-delete" size="1.5rem" color="red" @click="deletarLembrete(index), $router.back()"/>
       </div>
     </div>
@@ -24,6 +25,7 @@
     </div>
   </div>
 
+  <ModalAddLembrete v-model="modalEditLembrete" is-edit :item="lembrete" :index="indexToEdit" @submit="editarLembrete"/>
 
   <q-dialog v-model="modal" full-width>
     <q-card class="bg-white text-black">
@@ -50,10 +52,13 @@
 import formatDate from '../composables/formatters';
 import { Lembretes, LembretesSeparados } from '../stores';
 
-const { delLembrete } = useLembretesStore()
+const { delLembrete, editLembrete } = useLembretesStore()
 
 const modal = ref(false)
+const modalEditLembrete = ref(false)
 const lembrete = ref()
+const indexToEdit = ref()
+const router = useRouter()
 
 interface Lembrete {
   data: string;
@@ -80,6 +85,20 @@ function deletarLembrete(index: number){
   delLembrete(props.view, props.periodo, index)
 
   notifyPositive("Lembrete deletado com sucesso!");
+}
+
+function openModalEdit(index: number, item: Lembrete){
+  lembrete.value = item;
+  indexToEdit.value = index
+  modalEditLembrete.value = true;
+}
+
+function editarLembrete(item: Lembrete, index: number){
+  modalEditLembrete.value = false
+  editLembrete(props.view, props.periodo, index, item)
+
+  router.back()
+  notifyPositive("Lembrete editado com sucesso!");
 }
 
 function openModal(item: Lembrete){

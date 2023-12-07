@@ -1,15 +1,7 @@
 <template>
-  <div class="row justify-center">
+  <div class="row justify-center q-mt-lg">
     <div
-      class="row justify-around items-center button col-5 bg-grey-10 q-py-md q-ma-sm"
-      @click="$router.push({ path: `${view}/hoje` })"
-      >
-      <span class="text-subtitle1 text-bold">Hoje</span>
-      <span class="bg-primary circle text-bold">{{ lembretes.hoje.length }}</span>
-    </div>
-
-    <div
-      class="row justify-around items-center button col-5 bg-grey-10 q-py-md q-ma-sm"
+      class="row justify-around items-center button col-7 bg-grey-10 q-py-md q-ma-sm"
       @click="$router.push({ path: `${view}/todos` })"
       >
       <span class="text-subtitle1 text-bold">
@@ -19,7 +11,7 @@
     </div>
 
     <div
-      class="row justify-around items-center button col-5 bg-grey-10 q-py-md q-ma-sm"
+      class="row justify-around items-center button col-7 bg-grey-10 q-py-md q-ma-sm"
       @click="$router.push({ path: `${view}/concluidos` })"
       >
       <span class="text-subtitle1 text-bold">
