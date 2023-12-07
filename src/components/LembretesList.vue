@@ -46,6 +46,7 @@
       </div>
 
       <q-separator />
+      
       <div class="text-subtitle1 text-center text-bold">
         {{ formatDate(lembrete.data) }}
       </div>
