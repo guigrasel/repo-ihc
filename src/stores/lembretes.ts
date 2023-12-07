@@ -60,12 +60,12 @@ export const useLembretesStore = defineStore("lembretes", () => {
       lembretes.forEach((lembrete: Lembrete) => {
         const dataLembrete: DateTime = DateTime.fromISO(lembrete.data);
     
-        if (dataLembrete.hasSame(dataAtual, 'day')) {
+        if (dataLembrete.hasSame(dataAtual, 'day') && !lembrete.concluido) {
           pendentes.push(lembrete);
           return;
         }
     
-        if (dataLembrete < dataAtual) {
+        if (dataLembrete < dataAtual || lembrete.concluido) {
           concluidos.push(lembrete);
           return;
         }
@@ -80,7 +80,6 @@ export const useLembretesStore = defineStore("lembretes", () => {
       concluidos,
     };
   }
-
 
   function getLembretes(tipo: keyof Lembretes) {
     return separarLembretes(lembretes[tipo])
@@ -108,11 +107,26 @@ export const useLembretesStore = defineStore("lembretes", () => {
     salvarLembretes();
   }
 
+  function marcarConcluido(tipo: keyof Lembretes, periodo: keyof LembretesSeparados, index: number) {
+    const result: LembretesSeparados = separarLembretes(lembretes[tipo])
+    const editar = result[periodo][index]
+
+    const indexEditar = findIndex(lembretes[tipo], lembrete => isEqual(lembrete, editar))
+
+    console.log(lembretes[tipo][indexEditar]);
+    
+
+    lembretes[tipo][indexEditar].concluido = true
+
+    salvarLembretes();
+  }
+
   return {
     lembretes,
     novoLembrete,
     getLembretes,
     delLembrete,
-    editLembrete
+    editLembrete,
+    marcarConcluido
   };
 });

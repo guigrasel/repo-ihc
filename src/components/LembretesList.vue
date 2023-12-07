@@ -5,7 +5,7 @@
       v-for="(item, index) in items" 
       :key="index" :class="index === 0 && 'border-top'" 
       class="border-bottom row items-center justify-between text-left q-px-lg fit q-py-sm"
-      @click="openModal(item)"
+      @click="openModal(item, index)"
       >
       <div class="column">
         <span class="text-subtitle1 text-bold">{{ item.title }}</span>
@@ -40,6 +40,11 @@
         {{ lembrete.descricao }}
       </div>
 
+      <div v-if="!lembrete.concluido || lembrete.periodo === 'concluido'" class="btn full-width row justify-center items-center q-py-sm" @click="concluido(index), $router.back()">
+        <q-icon name="mdi-check" size="1.20rem" color="white" class="q-pa-xs bg-primary icon"/>
+        <span class="text-primary text-subtitle-1 text-bold q-ml-sm">Marcar como concluído</span>
+      </div>
+
       <q-separator />
       <div class="text-subtitle1 text-center text-bold">
         {{ formatDate(lembrete.data) }}
@@ -52,7 +57,7 @@
 import formatDate from '../composables/formatters';
 import { Lembretes, LembretesSeparados } from '../stores';
 
-const { delLembrete, editLembrete } = useLembretesStore()
+const { delLembrete, editLembrete, marcarConcluido } = useLembretesStore()
 
 const modal = ref(false)
 const modalEditLembrete = ref(false)
@@ -101,8 +106,15 @@ function editarLembrete(item: Lembrete, index: number){
   notifyPositive("Lembrete editado com sucesso!");
 }
 
-function openModal(item: Lembrete){
+function concluido(index: number){
+  marcarConcluido(props.view, props.periodo, indexToEdit.value)
+
+  notifyPositive("Lembrete marcado como concluído");
+}
+
+function openModal(item: Lembrete, index: number){
   modal.value = true
+  indexToEdit.value = index
   lembrete.value = item
 }
 </script>
@@ -123,5 +135,9 @@ function openModal(item: Lembrete){
 .border {
   border: 3px solid white;
   border-radius: 10px;
+}
+
+.icon {
+  border-radius: 100%;
 }
 </style>

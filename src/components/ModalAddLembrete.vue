@@ -7,9 +7,6 @@
         <q-btn icon="close" flat round dense v-close-popup color="black"/>
       </q-card-section>
 
-
-      {{form}}
-
       <q-separator />
 
       <q-card-section>
